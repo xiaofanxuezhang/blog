@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>hexo + github + cloudflare，有手就行的个人博客免费部署 | 小凡同学学点啥</title><meta name="author" content="小凡同学"><meta name="copyright" content="小凡同学"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="为什么要做个人博客随着学的东西越来越多，自己的笔记也越来越多，不好管理的同时，一些自己踩过的坑也不好分享给别人，思来想去还是做一个博客，记录一下自己的学习和生活。 准备工作1、准备一个域名 2、注册一个Cloudflare账号 3、注册一个GitHub账号 4、安装Git    Node.js   5、安装一个代码编辑器，这里推荐Visual Studio Code  第一步，安装hexo1、打开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo + github + cloudflare，有手就行的个人博客免费部署">
+<meta property="og:url" content="http://921132.xyz/2024/03/03/hexo%20+%20github%20+%20cloudflare%EF%BC%8C%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="小凡同学学点啥">
+<meta property="og:description" content="为什么要做个人博客随着学的东西越来越多，自己的笔记也越来越多，不好管理的同时，一些自己踩过的坑也不好分享给别人，思来想去还是做一个博客，记录一下自己的学习和生活。 准备工作1、准备一个域名 2、注册一个Cloudflare账号 3、注册一个GitHub账号 4、安装Git    Node.js   5、安装一个代码编辑器，这里推荐Visual Studio Code  第一步，安装hexo1、打开">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/03/04/6dMnhAFy9iQGUvP.png">
+<meta property="article:published_time" content="2024-03-03T14:11:52.000Z">
+<meta property="article:modified_time" content="2024-03-03T14:52:06.585Z">
+<meta property="article:author" content="小凡同学">
+<meta property="article:tag" content="AIGC 编程 随笔 AI绘画 独立开发者">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/03/04/6dMnhAFy9iQGUvP.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://921132.xyz/2024/03/03/hexo%20+%20github%20+%20cloudflare%EF%BC%8C%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'hexo + github + cloudflare，有手就行的个人博客免费部署',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-03 22:52:06'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/03/04/6dMnhAFy9iQGUvP.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="小凡同学学点啥"><img class="site-icon" src="https://s2.loli.net/2024/03/04/6dMnhAFy9iQGUvP.png"/></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">hexo + github + cloudflare，有手就行的个人博客免费部署</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-03T14:11:52.000Z" title="发表于 2024-03-03 22:11:52">2024-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-03T14:52:06.585Z" title="更新于 2024-03-03 22:52:06">2024-03-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="hexo + github + cloudflare，有手就行的个人博客免费部署"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="为什么要做个人博客"><a href="#为什么要做个人博客" class="headerlink" title="为什么要做个人博客"></a>为什么要做个人博客</h1><p>随着学的东西越来越多，自己的笔记也越来越多，不好管理的同时，一些自己踩过的坑也不好分享给别人，思来想去还是做一个博客，记录一下自己的学习和生活。</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>1、准备一个域名</p>
+<p>2、注册一个<a target="_blank" rel="noopener" href="https://dash.cloudflare.com/">Cloudflare</a>账号</p>
+<p>3、注册一个<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>账号</p>
+<p>4、安装<a target="_blank" rel="noopener" href="https://git-scm.com/">Git </a>   <a target="_blank" rel="noopener" href="https://nodejs.org/en">Node.js </a> </p>
+<p>5、安装一个代码编辑器，这里推荐<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code </a></p>
+<h1 id="第一步，安装hexo"><a href="#第一步，安装hexo" class="headerlink" title="第一步，安装hexo"></a>第一步，安装hexo</h1><p>1、打开cmd控制面板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>2、在合适的位置新建一个文件夹</p>
+<p>3、打开新建的文件夹，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>这个时候，目录下会多出一些文件，比如</p>
+<p><img src="https://s2.loli.net/2024/03/03/SIO5KlqYdobV78P.png"></p>
+<p>4、启动代码编辑器，比如vscode，选择整个文件夹打开，就可以任意编辑文件，修改配置了</p>
+<img src="https://s2.loli.net/2024/03/03/DhO2VmPkJvyqg16.png" title="" alt="" width="609">
+
+<p>5、可配置的内容比较多，需要慢慢学习摸索，可以去官方<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">配置 | Hexo</a>页面了解</p>
+<p><img src="https://s2.loli.net/2024/03/03/dBHPMu6oNgvIi3F.png"></p>
+<p>6、安装喜欢的主题，好的主题不仅美观，而且层次分明，很提升浏览和检索效率。</p>
+<p>这里以安装butterfly为例，你也可以去<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo官方主题库</a>选择喜欢的主题。</p>
+<p>打开代码编辑器的终端，直接输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b master https://gitee.com/immyw/hexo-theme-butterfly.git themes/butterfly</span><br></pre></td></tr></table></figure>
+
+<p>7、之后，再安装插件和渲染器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure>
+
+<p> 8、为防止之后cloudflare pages在初始化时找不到主题的url，我们需要在根目录新建一个文件，取名   .gitmodules ，写入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[submodule &quot;themes/butterfly&quot;]</span><br><span class="line">path = themes/butterfly</span><br><span class="line">url = git@github.com:jerryc127/hexo-theme-butterfly.git</span><br></pre></td></tr></table></figure>
+
+<p>注意这里的path和url需要根据你设置的主题进行修改</p>
+<p>9、运行以下命令，查看博客页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean //执行此命令后继续下一条</span><br><span class="line">hexo g //生成博客前端代码</span><br><span class="line">hexo s //本地预览</span><br></pre></td></tr></table></figure>
+
+<p>之后Ctrl+点击 </p>
+<p><img src="https://s2.loli.net/2024/03/03/QCq1vMbh3OP2Ke8.png"></p>
+<p>就可以在默认浏览器查看你现在博客的样子了</p>
+<h1 id="第二步，设置github个人仓库"><a href="#第二步，设置github个人仓库" class="headerlink" title="第二步，设置github个人仓库"></a>第二步，设置github个人仓库</h1><p>1、登录github，在右上角处点击</p>
+<p><img src="https://s2.loli.net/2024/03/03/Sv6M8UeJNzP3jtA.png"></p>
+<p>2、设置仓库名称，属性选择私人仓库，取一个合适的名字，尽量不要有中文、符号、括号之类的，这里因为我已经建了blog仓库，因此有红色提示。</p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\marktext\images\2024-03-03-21-19-03-image.png"></p>
+<p>3、来到新建的仓库页面，复制git链接</p>
+<img title="" src="https://s2.loli.net/2024/03/03/iv5Yq4xWcaCgFVJ.png" alt="" data-align="inline">
+
+<p>4、推荐在除C盘外的任意盘根目录下，右键点击git bash，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/yourname/example.git</span><br></pre></td></tr></table></figure>
+
+<p>这里替换成你自己的用户名和仓库名，会自动下载仓库的文件夹，注意当前目录不要有和仓库同名的文件夹。</p>
+<p>5、将之前hexo新建的文件夹内，全部内容复制到github仓库文件夹内，像这样</p>
+<p><img src="https://s2.loli.net/2024/03/03/vp5XVKwrBFca3Is.png"></p>
+<p>6、进入文件夹，右键点击git bash，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;Initial commit&quot;</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<p>即可将代码上传至github仓库，后续的更新只需要输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;Initial commit&quot;</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<p>即可，如果不打算每次写commit，也可以保存成一个快捷命令，在博客文件夹根目录新建一个记事本，打开，下入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;Initial commit&quot;</span><br><span class="line">git push -u origin main</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>保存成.bat文件，比如  git-commands.bat，直接双击使用。</p>
+<h1 id="第三步，设置cloudflare"><a href="#第三步，设置cloudflare" class="headerlink" title="第三步，设置cloudflare"></a>第三步，设置cloudflare</h1><p>1、打开cloudflare的主页，在左下角找到</p>
+<p><img src="https://s2.loli.net/2024/03/03/TS3AEwvCQbhjPNy.png"></p>
+<p>2、新建一个应用程序，选择pages</p>
+<p><img src="https://s2.loli.net/2024/03/03/jZ9aHr2iyIvOMtl.png"></p>
+<p>3、选择你新建的github仓库</p>
+<p><img src="https://s2.loli.net/2024/03/03/Kacsn3mISqJbfxR.png"></p>
+<p>4、开始配置</p>
+<p><img src="https://s2.loli.net/2024/03/03/QcF8zfiqB4XjARL.png"></p>
+<p>5、构建配置命令这里一定要输入  npx hexo generate</p>
+<p><img src="https://s2.loli.net/2024/03/03/cmBE3SMy6DWFsI2.png"></p>
+<p>6、配置环境变量   NODE_VERSION 和 NPM_VERSION   ，选择你电脑里的版本号   </p>
+<p><img src="https://s2.loli.net/2024/03/03/SHJrBKAs1gPM4Xy.png"></p>
+<p>7、部署，大功告成，顺利的话，部署完成之后打开cloudflare给的链接，就能看到和本地调试一样的内容了。</p>
+<p>8、为了更好记，更有个人的标记，这时候就要用到最开始准备的域名了，在项目设置找到自定义域名</p>
+<p><img src="https://s2.loli.net/2024/03/03/NimFqQrlXIZwGJK.png"></p>
+<p>输入你要使用的域名，并在域名解析中添加一个cname解析，指向cloudflare pages分配的地址，就可以用你的域名访问博客了！</p>
+<h1 id="最后逼逼两句"><a href="#最后逼逼两句" class="headerlink" title="最后逼逼两句"></a>最后逼逼两句</h1><h2 id="为什么不直接部署在github-pages"><a href="#为什么不直接部署在github-pages" class="headerlink" title="为什么不直接部署在github pages"></a>为什么不直接部署在github pages</h2><p>因为免费用户想使用github pages，github仓库必须是开放的，这意味着所有人都能直接下载你的个人博客的所有内容，为了个人信息安全考虑，还是采用私人仓库，使用cloudflare pages部署比较好</p>
+<h2 id="建好博客之后呢"><a href="#建好博客之后呢" class="headerlink" title="建好博客之后呢"></a>建好博客之后呢</h2><p>下载一个makedown编辑器，就可以开始编写博客了，这里推荐一个开源免费的编辑器<a target="_blank" rel="noopener" href="https://www.marktext.cc/">MarkText</a></p>
+<p>为了能让博客更好的加载图片，并且减轻我们整理图片的压力，我们还需要一个图床，来存放博客中使用的图片，我之后也会整理一下目前能免费用且好用图床，敬请期待！</p>
+<h2 id="以及"><a href="#以及" class="headerlink" title="以及"></a>以及</h2><p>欢迎大家来我的博客<a href="https://921132.xyz/">小凡同学学点啥</a>玩耍，不过刚刚建好，还啥都没有呢，我会尽快更新一些好的内容的。</p>
+<h1 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h1><h5 id="快速搭建个人博客-——-保姆级教程-攻城狮杰森-pdpeng-github-io"><a href="#快速搭建个人博客-——-保姆级教程-攻城狮杰森-pdpeng-github-io" class="headerlink" title="快速搭建个人博客 —— 保姆级教程 | 攻城狮杰森 (pdpeng.github.io)"></a><a target="_blank" rel="noopener" href="https://pdpeng.github.io/2022/01/19/setup-personal-blog/">快速搭建个人博客 —— 保姆级教程 | 攻城狮杰森 (pdpeng.github.io)</a></h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/WongSSH/article/details/125480434">在Cloudflare中自动化部署hexo博客_cloudflare pages hexo-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://kong.vision/Hexo-CloudFlare-Pages-Error/">Hexo CloudFlare Pages Error | Eyeseas (kong.vision)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://921132.xyz">小凡同学</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://921132.xyz/2024/03/03/hexo%20+%20github%20+%20cloudflare%EF%BC%8C%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2/">http://921132.xyz/2024/03/03/hexo%20+%20github%20+%20cloudflare%EF%BC%8C%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://921132.xyz" target="_blank">小凡同学学点啥</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/03/04/6dMnhAFy9iQGUvP.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/03/03/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/03/04/6dMnhAFy9iQGUvP.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小凡同学</div><div class="author-info__description">我会在这里记录学习代码、AI，研究开源项目的一些新的体会</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">为什么要做个人博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E5%AE%89%E8%A3%85hexo"><span class="toc-number">3.</span> <span class="toc-text">第一步，安装hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%8C%E8%AE%BE%E7%BD%AEgithub%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">第二步，设置github个人仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%8C%E8%AE%BE%E7%BD%AEcloudflare"><span class="toc-number">5.</span> <span class="toc-text">第三步，设置cloudflare</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E9%80%BC%E9%80%BC%E4%B8%A4%E5%8F%A5"><span class="toc-number">6.</span> <span class="toc-text">最后逼逼两句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E9%83%A8%E7%BD%B2%E5%9C%A8github-pages"><span class="toc-number">6.1.</span> <span class="toc-text">为什么不直接部署在github pages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E5%A5%BD%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%90%8E%E5%91%A2"><span class="toc-number">6.2.</span> <span class="toc-text">建好博客之后呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%8F%8A"><span class="toc-number">6.3.</span> <span class="toc-text">以及</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%9D%A5%E6%BA%90"><span class="toc-number">7.</span> <span class="toc-text">参考来源</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E2%80%94%E2%80%94-%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B-%E6%94%BB%E5%9F%8E%E7%8B%AE%E6%9D%B0%E6%A3%AE-pdpeng-github-io"><span class="toc-number">7.0.0.0.1.</span> <span class="toc-text">快速搭建个人博客 —— 保姆级教程 | 攻城狮杰森 (pdpeng.github.io)</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/03/hexo%20+%20github%20+%20cloudflare%EF%BC%8C%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2/" title="hexo + github + cloudflare，有手就行的个人博客免费部署">hexo + github + cloudflare，有手就行的个人博客免费部署</a><time datetime="2024-03-03T14:11:52.000Z" title="发表于 2024-03-03 22:11:52">2024-03-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/03/hello-world/" title="Hello World">Hello World</a><time datetime="2024-03-03T08:17:47.093Z" title="发表于 2024-03-03 16:17:47">2024-03-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 小凡同学</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
